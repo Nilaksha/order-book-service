@@ -23,6 +23,7 @@ public class OrderBookEntity {
     @JoinColumn(name = "order_book_id")
     private Collection<OrderEntity> orderEntities;
 
+    @Enumerated(value = EnumType.STRING)
     private OrderBookStatus orderBookStatus;
 
 }

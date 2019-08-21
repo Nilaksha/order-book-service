@@ -16,9 +16,6 @@ public class OrderEntity {
     @EqualsAndHashCode.Exclude
     private Integer id;
 
-    @ManyToOne
-    private OrderBookEntity orderBookEntity;
-
     private Integer quantity;
 
     private Double price;
