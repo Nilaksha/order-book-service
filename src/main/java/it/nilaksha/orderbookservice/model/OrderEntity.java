@@ -1,20 +1,20 @@
 package it.nilaksha.orderbookservice.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
 
 @Data
-@Entity
-@Table(name = "order")
+@Embeddable
 public class OrderEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Exclude
     private Integer id;
+
+    @Enumerated(value = EnumType.STRING)
+    private OrderType orderType;
 
     private Integer quantity;
 

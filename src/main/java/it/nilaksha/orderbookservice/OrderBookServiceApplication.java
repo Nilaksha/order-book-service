@@ -8,9 +8,11 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
+@EnableSwagger2
 @SpringBootApplication
 public class OrderBookServiceApplication {
 
@@ -23,7 +25,7 @@ public class OrderBookServiceApplication {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("it.nilaksha.orderbookservice.controller"))
-				.paths(regex("api/v1/.*"))
+				.paths(regex("/api/v1/.*"))
 				.build()
 				.apiInfo(buildApiInfo());
 	}
@@ -33,7 +35,7 @@ public class OrderBookServiceApplication {
 				.description("API documentation for Order Book Service ")
 				.license("Apache 2.0")
 				.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-				.version("1.1.0-SNAPSHOT")
+				.version("0.0.1-SNAPSHOT")
 				.build();
 	}
 

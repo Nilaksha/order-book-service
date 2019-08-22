@@ -13,7 +13,8 @@ public class InstrumentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
-    private Integer id;
+    private Long id;
 
     private String name;
+
 }

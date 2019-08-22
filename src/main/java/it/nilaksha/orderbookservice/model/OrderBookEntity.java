@@ -2,6 +2,8 @@ package it.nilaksha.orderbookservice.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -14,14 +16,19 @@ public class OrderBookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
-    private Integer id;
+    private Long id;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "instrument_id")
     private InstrumentEntity instrumentEntity;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_book_id")
-    private Collection<OrderEntity> orderEntities;
+    @JoinTable(name = "ob_order", joinColumns = @JoinColumn(name = "order_book_id"))
+    @ElementCollection(fetch = FetchType.LAZY)
+    private Collection<OrderEntity> orders;
+
+    @JoinTable(name = "ob_execution", joinColumns = @JoinColumn(name = "order_book_id"))
+    @ElementCollection(fetch = FetchType.LAZY)
+    private Collection<ExecutionEntity> executions;
 
     @Enumerated(value = EnumType.STRING)
     private OrderBookStatus orderBookStatus;

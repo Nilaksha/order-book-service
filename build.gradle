@@ -27,6 +27,7 @@ dependencies {
         exclude group: 'io.swagger', module: 'swagger-models'
     }
     implementation "io.springfox:springfox-swagger-ui:2.9.2"
+    implementation "io.swagger:swagger-models:1.5.21"
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
