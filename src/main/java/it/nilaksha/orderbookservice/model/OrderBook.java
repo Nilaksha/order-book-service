@@ -18,10 +18,10 @@ public class OrderBook {
     @ApiModelProperty(value = "Id of the Instrument.", required = true, example = "1")
     private Long instrumentId;
 
-    @ApiModelProperty(value = "List of the Orders.", required = true, example = "1")
+    @ApiModelProperty(value = "List of the Orders.", required = true)
     private Collection<Order> orders;
 
-    @ApiModelProperty(value = "List of the Executions.", required = true, example = "1")
+    @ApiModelProperty(value = "List of the Executions.", required = true)
     private Collection<Execution> executions;
 
     @ApiModelProperty(value = "Status of the Order Book.", required = true, allowableValues = "OPEN, CLOSE", example = "OPEN")
